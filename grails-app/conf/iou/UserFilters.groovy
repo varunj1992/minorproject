@@ -5,8 +5,9 @@ class UserFilters {
     def filters = {
         userHome(controller:'user', action:'home') {
             before = {
-                if(session.user==null)
-                    redirect(controller: 'user',action: 'index')
+                if(!session.user) {
+                    redirect(controller: 'user', action: 'index')
+                }
                 return 0
             }
             after = { Map model ->

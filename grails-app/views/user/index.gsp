@@ -13,17 +13,46 @@
 </head>
 
 <body>
-
+<%--<g:render template="error" model='[msg : "${flash.message}"]'/>--%>
+<g:if test="${flash.message.equals('false')}">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Something Went Wrong</strong>. Better Try Again
+    </div>
+    <!--<script>
+        $("#myModal1").modal('show')
+        <%--$.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Error!',
+            // (string | mandatory) the text inside the notification
+            text: "${flash.message}",
+            // (string | optional) the image to display on the left
+            image: "${resource(dir: 'img', file: 'ui-sam.jpg')}",
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: true,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'my-sticky-class'
+        })--%>
+    </script>-->
+</g:if>
+<g:elseif test="${flash.message.equals('true')}">
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Well Done</strong>. Login to go to your home page
+    </div>
+</g:elseif>
+<g:elseif test="${flash.message}">
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>${flash.message}</strong>
+    </div>
+</g:elseif>
 <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
 <div class="container">
-    <g:render template="error" model='[msg : "${flash.message}"]'/>
-    <g:if test="${flash.message}">
-        <script>
-            $('#myModal1').modal('show')
-        </script>
-    </g:if>
 <!-- Modal -->
     <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
         <div class="modal-dialog">

@@ -25,7 +25,7 @@
     <!-- Custom styles for this template -->
     <link href="${resource(dir: 'css',file: 'style.css')}" rel="stylesheet">
     <link href="${resource(dir: 'css',file: 'style-responsive.css')}" rel="stylesheet">
-
+    <link href="${resource(dir: 'js/gritter/css',file: 'jquery.gritter.css')}" rel="stylesheet" type="text/css" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -41,7 +41,8 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="${resource(dir: 'js',file: 'jquery.js')}"></script>
     <script src="${resource(dir: 'js',file: 'bootstrap.min.js')}"></script>
-
+    <script type="text/javascript" src="${resource(dir: 'js/gritter/js',file: 'jquery.gritter.js')}"></script>
+    <script type="text/javascript" src="${resource(dir: 'js',file: 'gritter-conf.js')}"></script>
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="${resource(dir: 'js',file: 'jquery.backstretch.min.js')}"></script>

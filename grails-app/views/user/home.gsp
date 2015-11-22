@@ -12,6 +12,58 @@
     <meta name="layout" content="iou"/>
 </head>
 <body>
+<g:if test="${flash.message}">
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>${flash.message}</strong>.
+    </div>
+</g:if>
+<!-- Modal1 -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal1" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create Bill</h4>
+            </div>
+            <div class="modal-body">
+                <g:form controller="bill"  action="index" >
+                    <div>
+                        <input type="text" class="form-control" name="userName" placeholder="User Name" autofocus><br>
+                        <button class="btn btn-theme" type="submit">Submit</button>
+                    </div>
+                </g:form>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+<!-- Modal2 -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal2" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create a new Group</h4>
+            </div>
+            <div class="modal-body">
+                <g:form controller="utility"  action="createGroup" >
+                    <div>
+                        <input type="text" class="form-control" name="userName" placeholder="User Name" autofocus><br>
+                        <button class="btn btn-theme" type="submit">Submit</button>
+                    </div>
+                </g:form>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
 <section id="container" >
     <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -28,7 +80,7 @@
             <!--  notification start -->
             <ul class="nav top-menu">
                 <!-- settings start -->
-                <li class="dropdown">
+                <%--<li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                         <i class="fa fa-tasks"></i>
                         <span class="badge bg-theme">4</span>
@@ -159,7 +211,7 @@
                             <a href="index.html#">See all messages</a>
                         </li>
                     </ul>
-                </li>
+                </li>--%>
                 <!-- inbox dropdown end -->
             </ul>
             <!--  notification end -->
@@ -185,13 +237,25 @@
                 <g:if test="${session.user}">
                     <li class="sub-menu">
                         <a href="javascript:;" >
-                            <i class="fa fa-group"></i>
+                            <i class="fa fa-user"></i>
                             <span>Friends</span>
                         </a>
                         <ul class="sub">
                             <g:render template="friends" collection="${friends}" var="friends"/>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <g:link controller="bill" action="viewBill"><i class="fa fa-eye"></i><span>View Bills</span></g:link>
+                    </li>
+                    <%--<li class="sub-menu">
+                        <a href="javascript:;" >
+                            <i class="fa fa-group"></i>
+                            <span>Groups</span>
+                        </a>
+                        <ul class="sub">
+                            <g:render template="groups" collection="${groups}" var="groups"/>
+                        </ul>
+                    </li>--%>
                     <li>
                         <g:form controller="utility"  action="addFriend" class="form-login">
                             <h4 class="form-login" style="background: #5bc0de">Add a Friend</h4>
@@ -322,10 +386,10 @@
 
                 <div class="col-lg-3 ds">
                     <!--COMPLETED ACTIONS DONUTS CHART-->
-                    <h3>NOTIFICATIONS</h3>
+                    <h3>Options</h3>
 
                     <!-- First Action -->
-                    <div class="desc">
+                    <%--<div class="desc">
                         <div class="thumb">
                             <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
                         </div>
@@ -378,7 +442,23 @@
                                 <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br/>
                             </p>
                         </div>
+                    </div>--%>
+                <div class="desc">
+                    <div class="thumb">
+                        <span class="badge bg-theme"><i class="fa fa-plus"></i></span>
                     </div>
+                    <div class="details">
+                        <a data-toggle="modal" href="#myModal1" class="btn btn-primary">Add a Bill</a>
+                    </div>
+                </div>
+                <div class="desc">
+                    <div class="thumb">
+                        <span class="badge bg-theme"><i class="fa fa-group"></i></span>
+                    </div>
+                    <div class="details">
+                        <a data-toggle="modal" href="#myModal2" class="btn btn-primary">Create a Group</a>
+                    </div>
+                </div>
 
                     <!-- USERS ONLINE SECTION -->
 

@@ -12,11 +12,15 @@
 </head>
 
 <body>
-<g:render template="error" model='[msg : "${flash.message}"]'/>
-<g:if test="${flash.message}">
-    <script>
+<%--<g:render template="error" model='[msg : "${flash.message}"]'/>--%>
+<g:if test="${flash.message.equals('false')}">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Something went wrong</strong>. Change a few things up and try submitting again.
+    </div>
+    <!--<script>
         $('#myModal1').modal('show')
-    </script>
+    </script>-->
 </g:if>
 <div id="login-page">
     <div class="container">

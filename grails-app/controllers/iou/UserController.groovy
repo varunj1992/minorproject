@@ -12,7 +12,7 @@ IouMailService IouMailService
         }
         else
         {
-            flash.message = "Invalid Credentials"
+            flash.message = "false"
             redirect(action: 'index')
         }
     }
@@ -28,14 +28,14 @@ IouMailService IouMailService
     def register() { }
     def newUser(UserCO userCO) {
         if (userCO.hasErrors()) {
-            flash.message = "Something Went Wrong"
+            flash.message = "false"
             redirect(action: 'register')
         }
         else {
             User user = new User()
             bindData(user, userCO.getProperties(), [excludes: ['confPassword']])
             user.save(flush: true, failOnError: true)
-            flash.message = "Registered Succesfully"
+            flash.message = "true"
             redirect(action: 'index')
         }
     }
